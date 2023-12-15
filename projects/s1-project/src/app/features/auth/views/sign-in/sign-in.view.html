@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="signIn()">
+  <h2>Plataforma de Administración</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Correo</mat-label>
+    <input matInput type="email" formControlName="email">
+    <mat-icon matSuffix>person</mat-icon>
+    <mat-error *ngIf="form.controls.email.hasError('required')">Este campo es requerido</mat-error>
+    <mat-error *ngIf="form.controls.email.hasError('email')">El formato es incorrecto</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Contraseña</mat-label>
+    <input matInput [type]="showPasword ? 'text' : 'password'" formControlName="password" />
+    <button type="button" matSuffix mat-icon-button (click)="showPasword = !showPasword">
+      <mat-icon>{{showPasword ? 'visibility_off':'visibility'}}</mat-icon>
+    </button>
+
+  </mat-form-field>
+
+  <button mat-flat-ydebutton color="primary">Ingresar</button>
+</form>
